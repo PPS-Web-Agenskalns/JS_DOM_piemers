@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        * {
+            border: 1px so
+        }
+
+        .row {
+            display: flex;
+        }
+
+        #container {
+            margin: 5px;
+            border: 5px solid red;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+            background-color: lightcoral;
+            color: white;
+            font-size: 20px;
+        }
+
+        img {
+            max-width: 200px;
+            transition: transform .2s;
+        }
+
+        img:hover {
+            transform: scale(1.5);
+        }
+
+        .tag {
+            padding-right: 10px;
+            margin-right: 10px;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+
+
+            text-align: left;
+        }
+
+        .data {
+            border-bottom: 1px solid black;
+        }
+
+        #buy {
+            color: white;
+            background-color: red;
+            font-size: 20px;
+
+        }
+
+        #data-set {
+            padding: 6px;
+        }
+
+        #buy:hover {
+            background-color: white;
+            color: red;
+
+        }
+
+        #buy:active {
+            background-color: black;
+            color: red;
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <input id="nosaukums">
+    <button onclick="izveidotPreci()">GENERET PRECI</button>
+    <div class="row" id="Objekti">
+        <!-- Preces objekta sakums -->
+
+        <div id="container">
+            <div id="data-set">
+                <h1>Prece!</h1>
+                <img src="img/GP_prezent_16-1.png" alt="NAV PRECES BILDE">
+                <div class="row">
+                    <div id="tags">
+                        <div class="tag">Preces cena</div>
+                        <div class="tag">Preces krāsa</div>
+                        <div class="tag">Preces svars</div>
+                    </div>
+                    <div id="info">
+                        <div id="cena" class="data">CENA</div>
+                        <div id="Krāsa" class="data"></div>
+                        <div id="Svars" class="data"></div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <button id="buy">Pirkt</button>
+        </div>
+
+        <!-- Preces objekta beigas -->
+
+
+    </div>
+
+
+
+    <script>
+        function prece(cena, krasa, svars) {
+            this.cena = cena;
+            this.krasa = krasa;
+            this.svars = svars;
+        }
+
+        function izveidotPreci() {
+            var nosaukums = document.getElementById("nosaukums").value;
+
+
+            var container = document.createElement("div");
+            container.id = "container";
+            container.className = "container" + nosaukums;
+
+            var dataset = document.createElement("div");
+            dataset.id = "data-set";
+
+            var pirkt = document.createElement("button");
+            pirkt.id = "buy";
+            pirkt.textContent = "Pirkt";
+
+
+            var h1 = document.createElement("h1");
+            h1.textContent = "Nosaukums";
+            dataset.appendChild(h1);
+
+            var bilde = document.createElement("img");
+            bilde.src = "img/GP_prezent_16-1.png";
+            dataset.appendChild(bilde);
+
+
+            container.appendChild(dataset);
+            container.appendChild(pirkt);
+            document.getElementById("Objekti").appendChild(container);
+        }
+
+        var prece1 = new prece(500, "sarkana", 70);
+
+        /*function izveidotPreci() {
+            var ob = document.createElement("div");
+            ob.setAttribute("id", "container");
+            var dataset = document.createElement("div");
+            dataset.id = "data-set"
+
+            var title = document.createElement("h1");
+            title.textContent = "PRECE";
+
+            dataset.appendChild(title);
+            ob.appendChild(dataset);
+
+
+            document.body.appendChild(ob);
+        }*/
+
+
+        document.getElementById("cena").innerHTML = prece1.cena;
+        var c = document.getElementById("Krāsa");
+        c.innerHTML = prece1.krasa;
+        var c = document.getElementById("Svars");
+        c.innerHTML = prece1.svars;
+
+    </script>
+</body>
+
+</html>

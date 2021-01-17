@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .container {
+            display: inline-block;
+            padding: 5px;
+            background-color: orange;
+            border: 10px solid brown;
+            margin: 5px;
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <button onclick="izveidotCepumu()">GENERET</button>
+
+    <div class="container" id="container">
+        <h1 id="Nosaukums">Info</h1>
+        <div class="row">
+            <div>
+                <div class="row">
+                    <div>Garsa</div>
+                    <div>Mikla</div>
+                </div>
+                <div class="row">
+                    <div id="garsa">info</div>
+                    <div id="mikla">info</div>
+                </div>
+
+                <div class="row">
+                    <div>CENA: </div>
+                    <div id="cena">info</div>
+                </div>
+            </div>
+            <img src="img/teika.jpg">
+        </div>
+    </div>
+
+
+
+    <script>
+        function cepums(cena, garsa, mikla, nosaukums) {
+            this.cena = cena;
+            this.garsa = garsa;
+            this.mikla = mikla;
+            this.nosaukums = nosaukums;
+        }
+
+        function izveidotCepumu() {
+            var container = document.createElement("div");
+            container.id = "container";
+            container.className = "container";
+
+            var nosaukums = document.createElement("h1");
+            nosaukums.id = "Nosaukums"
+            nosaukums.textContent = "Šokolādes cepums";
+
+            var row = document.createElement("div");
+            row.className = "row";
+            var dati = document.createElement("div");
+
+            //datu rindas sakums
+            var datuRinda = document.createElement("div");
+            datuRinda.className = "row";
+
+            var dataLabel = document.createElement("div");
+            dataLabel.textContent = "garsa";
+
+            var dataValue = document.createElement("div");
+            dataValue.textContent = "Mikla";
+
+            datuRinda.appendChild(dataLabel);
+            datuRinda.appendChild(dataValue);
+            dati.appendChild(datuRinda);
+            //datu rindas beigas
+
+
+
+            //datu rindas sakums
+            var datuRinda2 = document.createElement("div");
+            datuRinda2.className = "row";
+
+            var dataLabel2 = document.createElement("div");
+            dataLabel2.textContent = "sokolades";
+
+            var dataValue2 = document.createElement("div");
+            dataValue2.textContent = "smilsu";
+
+            datuRinda2.appendChild(dataLabel2);
+            datuRinda2.appendChild(dataValue2);
+            dati.appendChild(datuRinda2);
+            //datu rindas beigas
+
+
+
+
+
+
+
+            row.appendChild(dati);
+
+            var img = document.createElement("img");
+            img.src = "img/teika.jpg";
+            row.appendChild(img);
+
+            container.appendChild(nosaukums);
+            container.appendChild(row);
+            document.body.appendChild(container);
+        }
+
+
+
+        var sokolades_cepums = new cepums(100, "sokolades", "smilsu", "Šokolādes Cepums");
+
+        document.getElementById("Nosaukums").innerHTML = sokolades_cepums.nosaukums;
+        document.getElementById("garsa").innerHTML = sokolades_cepums.garsa;
+        document.getElementById("mikla").innerHTML = sokolades_cepums.mikla;
+        document.getElementById("cena").innerHTML = sokolades_cepums.cena;
+
+    </script>
+</body>
+
+</html>
