@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Snake Game</title>
     <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
     <style>
@@ -8,6 +9,7 @@
             background: gray;
             border: 5px solid black;
         }
+
     </style>
 </head>
 
@@ -44,8 +46,11 @@
     const snakeboard = document.getElementById("snakeboard");
     const snakeboard_ctx = snakeboard.getContext("2d");
 
+    document.addEventListener("keydown", change_direction)
+
     let dx = 10;
     let dy = 0;
+    let changing_direction = false;
 
     function main() {
 
@@ -58,7 +63,7 @@
             move_snake();
             drawSnake();
             main();
-        }, 500)
+        }, 100)
 
 
     }
@@ -85,6 +90,43 @@
 
     }
 
+    function change_direction(event) {
+        const LEFT_KEY = 37;
+        const UP_KEY = 38;
+        const RIGHT_KEY = 39;
+        const DOWN_KEY = 40;
+
+
+        changing_direction = true;
+        const keyPressed = event.keyCode;
+
+        console.log(keyPressed);
+        const goingUp = dy === -10;
+        const goingDown = dy === 10;
+        const goingRight = dx === 10;
+        const goingLeft = dx === -10;
+
+        if (keyPressed === LEFT_KEY && goingRight === false) {
+            dx = -10;
+            dy = 0;
+        }
+        if (keyPressed === RIGHT_KEY && goingLeft === false) {
+            dx = 10;
+            dy = 0;
+        }
+        if (keyPressed === UP_KEY && goingDown === false) {
+            dx = 0;
+            dy = -10;
+        }
+        if (keyPressed === DOWN_KEY && goingUp === false) {
+            dx = 0;
+            dy = 10;
+        }
+    }
+
     //ŠEIT SĀKAS PROGRAMMA
     main();
-</script></html>
+
+</script>
+
+</html>
